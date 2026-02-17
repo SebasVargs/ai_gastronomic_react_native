@@ -93,13 +93,21 @@ export const Dashboard: React.FC = () => {
 
     const distribution: Record<string, number> = {};
     recommendations.forEach(rec => {
-      distribution[rec.categoria] = (distribution[rec.categoria] || 0) + 1;
+      distribution[rec.categoria_plato] = (distribution[rec.categoria_plato] || 0) + 1;
     });
 
     return Object.entries(distribution).map(([name, value]) => ({
       name,
       value,
     }));
+  };
+
+  const formatCompactNumber = (number: number) => {
+    return new Intl.NumberFormat('es-ES', { // O 'en-US' según tu preferencia
+      notation: "compact",
+      compactDisplay: "short",
+      maximumFractionDigits: 1
+    }).format(number);
   };
 
   return (
@@ -114,9 +122,12 @@ export const Dashboard: React.FC = () => {
       <div className="metrics-grid">
         <div className="animate-fadeIn stagger-1">
           <MetricCard
-            value={metrics.syntheticData.toLocaleString()}
+            // Pasas el número raw, pero formateado
+            value={formatCompactNumber(metrics.syntheticData)}
             label="Datos Sintéticos"
             icon={<Database size={32} />}
+            // Opcional: Pasas el valor completo en un tooltip nativo por si quieren ver el exacto
+            title={metrics.syntheticData.toLocaleString()}
           />
         </div>
         <div className="animate-fadeIn stagger-2">

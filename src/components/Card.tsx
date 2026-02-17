@@ -10,11 +10,11 @@ interface CardProps {
   gradient?: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({ 
-  children, 
-  className = '', 
+export const Card: React.FC<CardProps> = ({
+  children,
+  className = '',
   hover = false,
-  gradient = false 
+  gradient = false
 }) => {
   return (
     <div className={`card ${hover ? 'card-hover' : ''} ${gradient ? 'card-gradient' : ''} ${className}`}>
@@ -31,13 +31,14 @@ interface MetricCardProps {
     value: number;
     isPositive: boolean;
   };
+  title?: string;
 }
 
-export const MetricCard: React.FC<MetricCardProps> = ({ 
-  value, 
-  label, 
+export const MetricCard: React.FC<MetricCardProps> = ({
+  value,
+  label,
   icon,
-  trend 
+  trend
 }) => {
   return (
     <Card className="metric-card" hover>

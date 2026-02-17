@@ -4,6 +4,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Home, Users, Sparkles, BarChart3, Settings } from 'lucide-react';
 import './Navigation.css';
+import { Utensils } from "lucide-react";
 
 interface NavItem {
   path: string;
@@ -24,7 +25,9 @@ export const Navigation: React.FC = () => {
     <nav className="navigation">
       <div className="nav-header">
         <div className="nav-logo">
-          <div className="logo-icon">🍽️</div>
+          <div>
+            <Utensils size={32} strokeWidth={2.2} />
+          </div>
           <div className="logo-text">
             <h1>GastroAI</h1>
             <p>Recomendaciones Inteligentes</p>
@@ -37,7 +40,7 @@ export const Navigation: React.FC = () => {
           <NavLink
             key={item.path}
             to={item.path}
-            className={({ isActive }) => 
+            className={({ isActive }) =>
               `nav-link ${isActive ? 'nav-link-active' : ''}`
             }
           >
