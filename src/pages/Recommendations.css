@@ -389,3 +389,179 @@
   color: var(--primary-700, #c0392b);
   box-shadow: 0 2px 8px rgba(241, 90, 71, 0.15);
 }
+
+.results-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+}
+
+/* Toggle button */
+.result-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  background: white;
+  color: var(--neutral-600);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.result-filter-toggle:hover {
+  border-color: var(--primary-300, #f9a08e);
+  color: var(--primary-700, #c0392b);
+  background: rgba(241, 90, 71, 0.04);
+}
+
+.result-filter-toggle.active {
+  border-color: var(--primary-500);
+  background: linear-gradient(135deg, rgba(241, 90, 71, 0.1), rgba(249, 115, 22, 0.06));
+  color: var(--primary-700, #c0392b);
+  box-shadow: 0 2px 8px rgba(241, 90, 71, 0.15);
+}
+
+/* Active filter count badge */
+.filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  background: var(--primary-500);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Filter panel container */
+.result-filters-panel {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(254, 243, 242, 0.4) 100%);
+  border: 1.5px solid rgba(241, 90, 71, 0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: 0 4px 20px rgba(241, 90, 71, 0.08);
+}
+
+/* Panel header: label + reset */
+.result-filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.result-filters-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--neutral-700);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.result-filters-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  background: white;
+  color: var(--neutral-600);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.result-filters-reset:hover {
+  border-color: var(--error, #ef4444);
+  color: var(--error, #ef4444);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+/*
+  Two-column body layout matching the wireframe:
+  Left  → Rango Mínimo + Confianza Mínima (sliders)
+  Right → Rango de Precios + Restaurante
+*/
+.result-filters-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl) var(--space-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+.result-filters-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Individual filter group */
+.result-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Full-width group — Categoría row */
+.result-filter-group--full {
+  /* sits outside .result-filters-body so it's naturally full width */
+  margin-top: var(--space-sm);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--neutral-100);
+}
+
+.result-filter-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+}
+
+/* Empty state inside panel */
+.result-filters-empty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-left: 3px solid var(--error, #ef4444);
+  border-radius: var(--radius-md);
+  color: #991b1b;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .results-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-filter-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .result-filters-body {
+    grid-template-columns: 1fr;
+  }
+}
