@@ -122,11 +122,9 @@ export const Dashboard: React.FC = () => {
       <div className="metrics-grid">
         <div className="animate-fadeIn stagger-1">
           <MetricCard
-            // Pasas el número raw, pero formateado
             value={formatCompactNumber(metrics.syntheticData)}
             label="Datos Sintéticos"
             icon={<Database size={32} />}
-            // Opcional: Pasas el valor completo en un tooltip nativo por si quieren ver el exacto
             title={metrics.syntheticData.toLocaleString()}
           />
         </div>
