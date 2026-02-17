@@ -1,0 +1,85 @@
+/* src/pages/Settings.css */
+
+.settings {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.settings-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.settings-header h1 {
+  margin-bottom: var(--space-xs);
+}
+
+.settings-header p {
+  color: var(--neutral-600);
+  font-size: 1.125rem;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+}
+
+.settings-card h3 {
+  margin-bottom: var(--space-lg);
+  color: var(--neutral-900);
+  font-size: 1.25rem;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--neutral-200);
+  margin-bottom: var(--space-md);
+}
+
+.setting-item:last-of-type {
+  border-bottom: none;
+}
+
+.setting-label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-xs);
+}
+
+.setting-value {
+  color: var(--neutral-600);
+  font-size: 0.9375rem;
+  font-family: 'Courier New', monospace;
+}
+
+.connection-badge {
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.connection-badge.connected {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.connection-badge.disconnected {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
+
+.maintenance-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}

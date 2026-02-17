@@ -1,0 +1,225 @@
+/* src/components/Navigation.css */
+
+.navigation {
+  width: 280px;
+  height: 100vh;
+  background: white;
+  border-right: 1px solid var(--neutral-200);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.nav-header {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.logo-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 12px rgba(241, 90, 71, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.logo-text h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary-700), var(--accent-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-text p {
+  font-size: 0.75rem;
+  color: var(--neutral-600);
+  margin: 0;
+  font-weight: 500;
+}
+
+.nav-links {
+  flex: 1;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  overflow-y: auto;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-lg);
+  color: var(--neutral-700);
+  font-weight: 500;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+  transform: scaleY(0);
+  transition: transform var(--transition-base);
+}
+
+.nav-link:hover {
+  background: var(--neutral-50);
+  color: var(--primary-600);
+}
+
+.nav-link-active {
+  background: linear-gradient(
+    135deg,
+    rgba(241, 90, 71, 0.1),
+    rgba(249, 115, 22, 0.05)
+  );
+  color: var(--primary-700);
+  font-weight: 600;
+}
+
+.nav-link-active::before {
+  transform: scaleY(1);
+}
+
+.nav-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-link-label {
+  flex: 1;
+}
+
+.nav-footer {
+  padding: var(--space-xl);
+  border-top: 1px solid var(--neutral-200);
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--neutral-50);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--neutral-700);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-connected {
+  background: var(--success);
+}
+
+.status-connected::before {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+.status-disconnected {
+  background: var(--error);
+}
+
+.status-disconnected::before {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .navigation {
+    width: 80px;
+  }
+
+  .nav-logo {
+    justify-content: center;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .nav-link-label {
+    display: none;
+  }
+
+  .nav-link {
+    justify-content: center;
+    padding: var(--space-md);
+  }
+}

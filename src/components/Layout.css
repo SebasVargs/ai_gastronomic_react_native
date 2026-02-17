@@ -1,0 +1,43 @@
+/* src/components/Layout.css */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+  position: relative;
+}
+
+.layout-main {
+  flex: 1;
+  margin-left: 280px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.layout-content {
+  padding: var(--space-2xl);
+  max-width: 1600px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 1024px) {
+  .layout-main {
+    margin-left: 80px;
+  }
+
+  .layout-content {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-main {
+    margin-left: 0;
+  }
+
+  .layout-content {
+    padding: var(--space-md);
+  }
+}
