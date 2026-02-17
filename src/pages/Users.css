@@ -1,0 +1,219 @@
+/* src/pages/Users.css */
+
+.users {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2xl);
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.users-header h1 {
+  margin-bottom: var(--space-xs);
+}
+
+.users-header p {
+  color: var(--neutral-600);
+  font-size: 1.125rem;
+}
+
+.user-form {
+  margin-bottom: var(--space-2xl);
+  max-width: 800px;
+}
+
+.user-form h3 {
+  margin-bottom: var(--space-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.9375rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: var(--space-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  background: white;
+  color: var(--neutral-900);
+  transition: all var(--transition-base);
+}
+
+.text-input:hover {
+  border-color: var(--neutral-300);
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(241, 90, 71, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-xl);
+}
+
+.user-card {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+}
+
+.user-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(241, 90, 71, 0.3);
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-info h3 {
+  margin-bottom: var(--space-sm);
+  font-size: 1.25rem;
+  color: var(--neutral-900);
+}
+
+.user-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--neutral-600);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-md);
+}
+
+.user-preferences {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  color: var(--neutral-600);
+}
+
+.preferences-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.preference-badge {
+  padding: 0.25rem 0.625rem;
+  background: linear-gradient(135deg, 
+    rgba(241, 90, 71, 0.1), 
+    rgba(249, 115, 22, 0.05)
+  );
+  color: var(--primary-700);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid rgba(241, 90, 71, 0.2);
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-lg);
+}
+
+.spinner {
+  color: var(--primary-500);
+  animation: spin 1s linear infinite;
+}
+
+.loading-state p {
+  color: var(--neutral-600);
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .users-header {
+    flex-direction: column;
+  }
+
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Preferences multi-select chips */
+.preferences-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.preference-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--neutral-200);
+  background: white;
+  color: var(--neutral-700);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.preference-chip:hover {
+  border-color: var(--primary-300, #f9a08e);
+  background: rgba(241, 90, 71, 0.04);
+}
+
+.preference-chip.selected {
+  border-color: var(--primary-500);
+  background: linear-gradient(135deg, rgba(241, 90, 71, 0.12), rgba(249, 115, 22, 0.08));
+  color: var(--primary-700, #c0392b);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(241, 90, 71, 0.15);
+}

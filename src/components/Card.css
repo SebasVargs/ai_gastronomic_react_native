@@ -1,0 +1,111 @@
+/* src/components/Card.css */
+
+.card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-500), var(--accent-500));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card-hover:hover::before {
+  transform: scaleX(1);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1) 0%, 
+    rgba(254, 243, 242, 0.5) 100%
+  );
+}
+
+/* Metric Card */
+.metric-card {
+  position: relative;
+  overflow: visible;
+}
+
+.metric-card-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.metric-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-100), var(--accent-100));
+  border-radius: var(--radius-lg);
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.metric-details {
+  flex: 1;
+}
+
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--neutral-900);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+  background: linear-gradient(135deg, var(--primary-700), var(--accent-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: var(--space-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.metric-trend.positive {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.metric-trend.negative {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
