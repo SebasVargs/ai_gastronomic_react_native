@@ -2,10 +2,9 @@
 
 .recommendation-card {
   position: relative;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 1) 0%, 
-    rgba(254, 243, 242, 0.3) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(254, 243, 242, 0.3) 100%);
 }
 
 .recommendation-rank {
@@ -167,10 +166,9 @@
 
 .recommendation-reason {
   padding: var(--space-md);
-  background: linear-gradient(135deg, 
-    rgba(241, 90, 71, 0.05), 
-    rgba(249, 115, 22, 0.03)
-  );
+  background: linear-gradient(135deg,
+      rgba(241, 90, 71, 0.05),
+      rgba(249, 115, 22, 0.03));
   border-left: 3px solid var(--primary-500);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
@@ -181,4 +179,127 @@
 .recommendation-reason strong {
   color: var(--primary-700);
   font-weight: 600;
+}
+
+.card-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-sm);
+}
+
+/* Relative wrapper for dropdown positioning */
+.card-menu-wrapper {
+  position: relative;
+}
+
+/* The ⋮ trigger button */
+.card-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  background: white;
+  color: var(--neutral-500);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-menu-btn:hover {
+  border-color: var(--primary-300, #f9a08e);
+  color: var(--primary-600);
+  background: rgba(241, 90, 71, 0.05);
+}
+
+/* Dropdown panel */
+.card-menu-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: white;
+  border: 1.5px solid var(--neutral-100);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropdownIn 0.15s ease-out;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Each menu item */
+.card-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--neutral-700);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.card-menu-item:not(:last-child) {
+  border-bottom: 1px solid var(--neutral-50);
+}
+
+.card-menu-item:hover:not(:disabled) {
+  background: rgba(241, 90, 71, 0.05);
+  color: var(--primary-700, #c0392b);
+}
+
+.card-menu-item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Icon bubble for each option */
+.card-menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  color: white;
+}
+
+.card-menu-item-icon.phone {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.card-menu-item-icon.map {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.card-menu-item-icon.plates {
+  background: linear-gradient(135deg, var(--primary-600), var(--accent-500));
+}
+
+/* "No disponible" hint inline text */
+.card-menu-item-hint {
+  margin-left: auto;
+  font-size: 0.725rem;
+  color: var(--neutral-400);
+  font-weight: 400;
 }

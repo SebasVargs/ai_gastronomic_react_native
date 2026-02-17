@@ -19,6 +19,9 @@ export interface Restaurant {
   tipo_cocina: string;
   rating?: number;
   imagen_url?: string;
+  latitud?: number;
+  longitud?: number;
+  telefono?: string;
 }
 
 export interface Plate {
@@ -31,6 +34,8 @@ export interface Plate {
   ingredientes?: string[];
   calorias?: number;
   imagen_url?: string;
+  rating?: number;
+  popularidad?: number;
 }
 
 export interface Review {
@@ -73,6 +78,11 @@ export interface Recommendation {
   restaurante_id?: string;
   descripcion?: string;
   // Campos opcionales para compatibilidad UI
+  nombre_restaurante?: string;
+  latitud?: number;
+  longitud?: number;
+  telefono?: string;
+
   nombre?: string;
   restaurante?: string;
   rating_predicho?: number;

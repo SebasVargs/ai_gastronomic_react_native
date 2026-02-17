@@ -127,6 +127,19 @@ class APIClient {
   async getCategories(): Promise<APIResponse<string[]>> {
     return this.handleRequest(this.client.get('/api/ai/categories'));
   }
+
+  async getPlatesByRestaurant(restaurantId: string): Promise<APIResponse<any[]>> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/restaurants/${restaurantId}/plates`);
+      const data = await response.json();
+      if (data.success) {
+        return { success: true, data: data.data };
+      }
+      return { success: false, error: data.detail || 'Error obteniendo platos' };
+    } catch (error) {
+      return { success: false, error: 'Error de conexión' };
+    }
+  }
 }
 
 export const apiClient = new APIClient();

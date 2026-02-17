@@ -1,0 +1,319 @@
+/* src/components/RestaurantPlatesModal.css */
+
+/* Re-uses .modal-backdrop from MapModal.css — make sure MapModal.css is imported
+   somewhere globally, or duplicate the backdrop rule here if needed. */
+
+.plates-modal {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 860px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.25s ease-out;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.plates-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--neutral-100);
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.plates-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.plates-modal-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.plates-modal-title h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--neutral-900);
+    line-height: 1.2;
+}
+
+.plates-modal-title p {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--neutral-500);
+}
+
+.plates-modal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+/* Filter toggle button */
+.plates-filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.875rem;
+    border: 1.5px solid var(--neutral-200);
+    border-radius: var(--radius-lg);
+    background: white;
+    color: var(--neutral-600);
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.plates-filter-toggle:hover {
+    border-color: var(--primary-300, #f9a08e);
+    color: var(--primary-700, #c0392b);
+    background: rgba(241, 90, 71, 0.04);
+}
+
+.plates-filter-toggle.active {
+    border-color: var(--primary-500);
+    background: linear-gradient(135deg, rgba(241, 90, 71, 0.1), rgba(249, 115, 22, 0.06));
+    color: var(--primary-700, #c0392b);
+}
+
+.plates-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background: var(--primary-500);
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* ── Filter panel ────────────────────────────────────────────────────────── */
+.plates-filters-panel {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--neutral-100);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(254, 243, 242, 0.4) 100%);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.plates-filters-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem 1.5rem;
+}
+
+.plates-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.plates-filter-group label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--neutral-700);
+}
+
+.plates-filters-reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    align-self: flex-start;
+    padding: 0.375rem 0.75rem;
+    border: 1.5px solid var(--neutral-200);
+    border-radius: var(--radius-lg);
+    background: white;
+    color: var(--neutral-600);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.plates-filters-reset:hover {
+    border-color: var(--error, #ef4444);
+    color: var(--error, #ef4444);
+    background: rgba(239, 68, 68, 0.05);
+}
+
+/* ── Body (scrollable) ───────────────────────────────────────────────────── */
+.plates-modal-body {
+    overflow-y: auto;
+    padding: 1.5rem;
+    flex: 1;
+}
+
+/* Loading / empty states */
+.plates-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 200px;
+    color: var(--neutral-500);
+}
+
+.plates-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 200px;
+    color: var(--neutral-400);
+    font-size: 1rem;
+}
+
+/* ── Plates grid ─────────────────────────────────────────────────────────── */
+.plates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+/* Individual plate card */
+.plate-card {
+    background: white;
+    border: 1.5px solid var(--neutral-100);
+    border-radius: var(--radius-xl);
+    padding: 1rem;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.plate-card:hover {
+    border-color: rgba(241, 90, 71, 0.25);
+    box-shadow: 0 4px 16px rgba(241, 90, 71, 0.1);
+    transform: translateY(-2px);
+}
+
+.plate-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.plate-category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.625rem;
+    background: linear-gradient(135deg, var(--primary-600), var(--accent-500));
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.plate-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--neutral-900);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.plate-description {
+    font-size: 0.8125rem;
+    color: var(--neutral-600);
+    line-height: 1.5;
+    margin: 0;
+    /* Max 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.plate-metrics {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.375rem;
+    padding-top: 0.625rem;
+    border-top: 1px solid var(--neutral-100);
+    flex-wrap: wrap;
+}
+
+.plate-metric {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.plate-metric-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.plate-metric-icon.rating {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+}
+
+.plate-metric-icon.price {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+}
+
+.plate-metric-icon.popularity {
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    color: white;
+}
+
+.plate-metric-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--neutral-900);
+}
+
+.plate-metric-label {
+    font-size: 0.7rem;
+    color: var(--neutral-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+    .plates-modal {
+        max-width: 100%;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        max-height: 92vh;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .plates-grid {
+        grid-template-columns: 1fr;
+    }
+}
