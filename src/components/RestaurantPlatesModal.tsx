@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { X, Star, DollarSign, UtensilsCrossed, Loader2, AlertCircle, SlidersHorizontal } from 'lucide-react';
 import apiClient from '../services/api';
 import './RestaurantPlatesModal.css';
+import { Utensils } from "lucide-react";
 
 interface Plate {
     id: string;
@@ -113,8 +114,9 @@ export const RestaurantPlatesModal: React.FC<RestaurantPlatesModalProps> = ({
                 {/* Header */}
                 <div className="plates-modal-header">
                     <div className="plates-modal-title">
-                        <span className="plates-modal-icon">🍽️</span>
                         <div>
+                            <Utensils size={32} strokeWidth={2.2} />
+                        </div>                        <div>
                             <h3>{restaurantName}</h3>
                             <p>
                                 {loading ? 'Cargando...' : `${filteredPlates.length} de ${plates.length} platos`}
