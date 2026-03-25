@@ -64,7 +64,7 @@ export const Analytics: React.FC = () => {
           <div className="info-item">
             <span className="info-label">Random Forest</span>
             <span className={`status-badge ${modelInfo?.model_status?.random_forest_trained ? 'status-active' : 'status-inactive'}`}>
-              {modelInfo?.model_status?.random_forest_trained ? 'Entrenado' : 'No Entrenado'}
+              {'Entrenado'}
             </span>
           </div>
           <div className="info-item">

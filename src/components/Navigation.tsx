@@ -1,8 +1,8 @@
 // src/components/Navigation.tsx
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Home, Users, Sparkles, BarChart3, Settings } from 'lucide-react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Home, Users, Sparkles, BarChart3, Settings, LogOut } from 'lucide-react';
 import './Navigation.css';
 import { Utensils } from "lucide-react";
 
@@ -21,6 +21,13 @@ const navItems: NavItem[] = [
 ];
 
 export const Navigation: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    navigate('/login');
+  };
+
   return (
     <nav className="navigation">
       <div className="nav-header">
@@ -55,7 +62,12 @@ export const Navigation: React.FC = () => {
           <div className="status-indicator status-connected"></div>
           <span>Conectado</span>
         </div>
+        <button className="nav-link" onClick={handleLogout} style={{ width: '100%', textAlign: 'left', cursor: 'pointer', marginTop: '8px', color: 'var(--primary-400)' }}>
+          <span className="nav-link-icon"><LogOut size={20} /></span>
+          <span className="nav-link-label">Cerrar Sesión</span>
+        </button>
       </div>
     </nav>
   );
 };
+
