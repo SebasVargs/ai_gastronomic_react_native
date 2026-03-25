@@ -24,7 +24,7 @@ export const Login: React.FC = () => {
       setError('Usuario o contraseña incorrectos');
     }
   };
-
+  //TODO: Implementar login con API
   return (
     <div className="login-page">
       <div className="login-card">
