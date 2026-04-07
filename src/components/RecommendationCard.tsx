@@ -20,7 +20,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [showPlates, setShowPlates] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
+  const [_showReviews, _setShowReviews] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -24,7 +24,7 @@ export const Recommendations: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [minRating, setMinRating] = useState<number>(0);
   const [openNow, setOpenNow] = useState<boolean>(false);
-  const [tipoRecomendacion, setTipoRecomendacion] = useState<'platos' | 'restaurantes'>('platos');
+  const [tipoRecomendacion, _setTipoRecomendacion] = useState<'platos' | 'restaurantes'>('platos');
 
   // ── Result filters (client-side) ───────────────────────────────────────────
   const [showResultFilters, setShowResultFilters] = useState(false);

@@ -20,10 +20,6 @@ export const Analytics: React.FC = () => {
     }
   };
 
-  const modelMetrics = modelInfo?.random_forest || {};
-  const mae = modelMetrics.mae || 0;
-  const rmse = modelMetrics.rmse || 0;
-  const r2 = modelMetrics.r2 || 0;
 
   return (
     <div className="analytics">

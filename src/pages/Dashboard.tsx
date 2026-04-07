@@ -17,7 +17,7 @@ export const Dashboard: React.FC = () => {
     modelAccuracy: '0%',
     recommendationsGenerated: 0,
   });
-  const [loading, setLoading] = useState(true);
+  const [_loading, setLoading] = useState(true);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
 
   useEffect(() => {
@@ -205,7 +205,7 @@ export const Dashboard: React.FC = () => {
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {getCategoryDistribution().map((entry, index) => (
+                  {getCategoryDistribution().map((_entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>

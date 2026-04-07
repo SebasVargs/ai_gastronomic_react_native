@@ -6,14 +6,13 @@ import type {
   Restaurant,
   Plate,
   Review,
-  Recommendation,
   ModelPerformance,
   APIResponse,
   RecommendationRequest,
   RecommendationResponse
 } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 class APIClient {
   private client: AxiosInstance;
