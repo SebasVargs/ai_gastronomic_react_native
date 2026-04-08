@@ -35,6 +35,7 @@
 @media (max-width: 768px) {
   .layout-main {
     margin-left: 0;
+    padding-bottom: 72px;
   }
 
   .layout-content {

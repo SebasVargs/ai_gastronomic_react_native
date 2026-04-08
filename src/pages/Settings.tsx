@@ -1,7 +1,7 @@
 // src/pages/Settings.tsx
 
 import React, { useState } from 'react';
-import { RefreshCw, Database, Trash2 } from 'lucide-react';
+import { RefreshCw, Database, Trash2, Download } from 'lucide-react';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import apiClient from '../services/api';
@@ -10,6 +10,7 @@ import './Settings.css';
 export const Settings: React.FC = () => {
   const [testing, setTesting] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'connected' | 'disconnected'>('connected');
+  const [exporting, setExporting] = useState(false);
 
   const testConnection = async () => {
     setTesting(true);
@@ -21,6 +22,17 @@ export const Settings: React.FC = () => {
   const clearCache = () => {
     localStorage.clear();
     alert('Caché limpiado exitosamente');
+  };
+
+  const exportCSV = async () => {
+    setExporting(true);
+    try {
+      await apiClient.downloadDatasetCSV();
+    } catch {
+      alert('Error al exportar el CSV. Verifica la conexión con la API.');
+    } finally {
+      setExporting(false);
+    }
   };
 
   return (
@@ -76,6 +88,27 @@ export const Settings: React.FC = () => {
         </Card>
 
         <Card className="settings-card animate-fadeIn stagger-3">
+          <h3>Exportar Datos</h3>
+          <div className="setting-item">
+            <div>
+              <div className="setting-label">Dataset del Proyecto</div>
+              <div className="setting-value">restaurant_dataset.csv</div>
+            </div>
+          </div>
+          <p className="export-description">
+            Descarga el dataset completo generado a partir de los usuarios, restaurantes, platos y reseñas del sistema.
+          </p>
+          <Button
+            onClick={exportCSV}
+            loading={exporting}
+            icon={<Download size={20} />}
+            variant="outline"
+          >
+            Exportar CSV
+          </Button>
+        </Card>
+
+        <Card className="settings-card animate-fadeIn stagger-4">
           <h3>Mantenimiento</h3>
           <div className="maintenance-actions">
             <Button

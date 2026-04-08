@@ -127,6 +127,21 @@ class APIClient {
     return this.handleRequest(this.client.get('/api/ai/categories'));
   }
 
+  // Dataset CSV Export
+  async downloadDatasetCSV(): Promise<void> {
+    const response = await this.client.get('/api/dataset/download-csv', {
+      responseType: 'blob',
+    });
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'restaurant_dataset.csv');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  }
+
   async getPlatesByRestaurant(restaurantId: string): Promise<APIResponse<any[]>> {
     try {
       const response = await fetch(`${API_BASE_URL}/api/restaurants/${restaurantId}/plates`);

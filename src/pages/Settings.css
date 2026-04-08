@@ -78,6 +78,13 @@
   gap: var(--space-md);
 }
 
+.export-description {
+  color: var(--neutral-600);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-lg);
+  line-height: 1.5;
+}
+
 @media (max-width: 768px) {
   .settings-grid {
     grid-template-columns: 1fr;
