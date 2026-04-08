@@ -14,7 +14,7 @@ export const Dashboard: React.FC = () => {
   const [metrics, setMetrics] = useState<DashboardMetrics>({
     totalUsers: 0,
     syntheticData: 1780000,
-    modelAccuracy: '0%',
+    modelAccuracy: '89%',
     recommendationsGenerated: 0,
   });
   const [_loading, setLoading] = useState(true);
